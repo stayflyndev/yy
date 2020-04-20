@@ -61,7 +61,7 @@ class Directory extends Component {
 
                 <Container className={classes.container}>
 
-                    <h1> Please select a category below... </h1>
+                    <h1> ... </h1>
 
                     <GridList cellHeight={180} className={classes.gridList}>
                         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>

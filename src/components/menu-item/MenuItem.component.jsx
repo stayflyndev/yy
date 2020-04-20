@@ -7,8 +7,6 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
-import DeleteIcon from '@material-ui/icons/Delete';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import { withRouter } from 'react-router-dom'; // higher order component 
 
@@ -55,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 
   }));
 
+  //we create a higher order componenent using withRouter in order to get access to the props to dynamically change the URL
 
 const MenuItem = ({title, imageURL, history, linkUrl, match}) => {
     const classes = useStyles();
@@ -77,7 +76,6 @@ const MenuItem = ({title, imageURL, history, linkUrl, match}) => {
 }
 
 
-// higher order components with access to Router props
-
+// higher order components with access to Router props like history, match, location
 export default withRouter(MenuItem)
 ;
