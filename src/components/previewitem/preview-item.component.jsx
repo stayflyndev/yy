@@ -66,14 +66,12 @@ const PreviewItem = ({id, name, price, imageUrl}) =>{
          
             {name} only $ {price}
      
-            {price}
+            
       
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
+      
         <Button size="small" color="primary">
           Learn More
         </Button>
