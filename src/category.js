@@ -8,9 +8,9 @@ const Cats = [{
     },
     {
         "id": 2,
-        "title": "chinese",
-        "imageURL": "https://images.pexels.com/photos/2347311/pexels-photo-2347311.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-        "linkUrl": 'chinese'
+        "title": "soul food",
+        "imageURL": "https://media-cdn.tripadvisor.com/media/photo-s/11/ff/43/f8/hushpuppies-and-fried.jpg",
+        "linkUrl": 'soulfood'
 
     },
     {

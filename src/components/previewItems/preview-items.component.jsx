@@ -16,7 +16,12 @@ const useStyles = theme => ({
         justifyContent: 'space-around',
         overflow: 'hidden',
 
-    }
+    },
+    gridList: {
+        "width": 1000,
+        "height": 'auto',
+        "overflowY": 'auto',
+      }
 });
 
 // items for each category coming from  the shop page 
@@ -30,7 +35,7 @@ const PreviewItems = (({ items, title }) => {
 
             <Container >
                 <h1>{title}</h1>
-                <GridList cols={4} >
+                <GridList className={classes.gridList} cols={4} >
                     {items
                         .filter((item, index) => index < 4)
                         .map(({ id, ...props }) => (

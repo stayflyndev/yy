@@ -44,8 +44,8 @@ const catsItems = [
     },
     {
       id: 2,
-      title: 'Chinese',
-      routeName: 'chinese',
+      title: 'Soul Food',
+      routeName: 'soulfood',
       items: [
         {
           id: 1,
@@ -55,25 +55,25 @@ const catsItems = [
         },
         {
           id: 2,
-          name: 'Happy Family',
+          name: 'Fried Catfish',
           imageUrl: 'https://i.ibb.co/dJbG1cT/yeezy.png',
           price: 280
         },
         {
           id: 3,
-          name: 'Beef and Brocc',
+          name: 'Fried Chicken',
           imageUrl: 'https://i.ibb.co/bPmVXyP/black-converse.png',
           price: 110
         },
         {
           id: 4,
-          name: 'Shrimp Fried Rice',
+          name: 'Collard Greens',
           imageUrl: 'https://i.ibb.co/1RcFPk0/white-nike-high-tops.png',
           price: 160
         },
         {
           id: 5,
-          name: 'NKung Pao Chicken',
+          name: 'Smothered Pork Chops',
           imageUrl: 'https://i.ibb.co/QcvzydB/nikes-red.png',
           price: 160
         }

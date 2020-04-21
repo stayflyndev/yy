@@ -1,6 +1,9 @@
 // CLASS DIRECTORY COMPONENT
 // USE A CLASS COMPONENT WHEN YOU NEED STATE
 // FOR STYLING CLASS COMPONENTS USE withStyles 
+// Use normal css.
+// Use import { withStyles } from "@material-ui/core/styles"; for HOC.
+// Use const { classes } = this.props;
 
 import React, { Component } from 'react';
 import MenuItem from './menu-item/MenuItem.component';
@@ -21,6 +24,7 @@ const useStyles = theme => ({
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
+        padding: '20px'
 
     },
     heading: {
@@ -59,13 +63,13 @@ class Directory extends Component {
         return (
             <div className={classes.root}>
 
-                <Container className={classes.container}>
+            
 
-                    <h1> ... </h1>
+                    <h1>If it aint about food i dont wanna hear it</h1>
 
                     <GridList cellHeight={180} className={classes.gridList}>
                         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-                            <ListSubheader component="div">Lets Eat Some Food</ListSubheader>
+                            {/* <ListSubheader component="div">Lets Eat Some Food</ListSubheader> */}
                         </GridListTile>
                         {Categories.map(({id, ...props}) => (
                             <GridListTile key={id}>
@@ -76,7 +80,6 @@ class Directory extends Component {
                     </GridList>
 
 
-                </Container>
 
             </div>
         )
