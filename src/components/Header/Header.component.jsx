@@ -26,10 +26,10 @@ const useStyles = makeStyles((theme) => ({
     button: {
         textDecoration: "none",
         color: 'white',
-        '&:hover': {
-            backgroundColor: 'green',
-            color: '#FFF'
-        }
+        // '&:hover': {
+        //     backgroundColor: 'green',
+        //     color: '#FFF'
+        // }
     }
   }));
 

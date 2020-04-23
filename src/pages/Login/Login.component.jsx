@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import { Link } from 'react-router-dom';
-
+import { signInWithGoogle} from '../../firebase/firebase'
 
 
 
@@ -41,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
    
   },
   link: {
-      textDecoration: 'none'
+      textDecoration: 'none',
+      color: 'inherit'
   }
 }));
 
@@ -108,7 +109,7 @@ export default function SignIn() {
             Sign In
           </Button>
           <Button
-            type="submit"
+            onClick={signInWithGoogle}
             fullWidth
             variant="contained"
             color="primary"
@@ -120,16 +121,17 @@ export default function SignIn() {
             <Grid item xs>
               <Link to='/'>
                 Forgot password?
-              </Link>
+              </Link> or
+              <Link to='/register' className={classes.link}>
+        <Button >Register account</Button>
+                        </Link>
             </Grid>
             <Grid item>
     
             </Grid>
           </Grid>
         </form>
-        <Link to='/register' className={classes.link}>
-        <Button >Register account</Button>
-                        </Link>
+    
       </div>
       <Box mt={8}>
         <Copyright />
