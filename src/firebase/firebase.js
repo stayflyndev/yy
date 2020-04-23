@@ -3,7 +3,6 @@
 FIREBASE CONFIG
  ==============
  */
-
  import firebase from 'firebase/app';
  import 'firebase/firestore';
  import 'firebase/auth'
@@ -24,10 +23,8 @@ FIREBASE CONFIG
 //   firebase.analytics();
 firebase.initializeApp(firebaseConfig)
 
-
-  export const auth = firebase.auth();
-  export const firestore = firebase.firestore();
-
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
 
   // GOOGLE AUTH SETUP
   const provider = new firebase.auth.GoogleAuthProvider()
