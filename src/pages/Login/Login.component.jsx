@@ -59,34 +59,24 @@ const useStyles = (theme) => ({
    super();
 
    this.state = {
-     displayName: '',
      email: '',
      password: '',
-     confirmPassword: ''
-   };
+     };
    }
 
   handleSubmit = async e => {
     e.preventdefault();
 
-    const { displayName, email, password, confirmPassword} = this.state;
+    const { email, password} = this.state;
 
-    if (password !== confirmPassword) {
-      alert("passwords dont match");
-      console.log("huh")
-      return;
-    }
+  
     try {
- const {user} = await auth.createUserWithEmailAndPassword(email, password)
-
- await createUserProfile(user, {displayName})
+  await auth.createUserWithEmailAndPassword(email, password)
  this.setState({
 
-  displayName: '',
   email: '',
   password: '',
-  confirmPassword: ''
-
+  
  })
     } catch (error) {
       console.log(error)
@@ -130,7 +120,7 @@ const useStyles = (theme) => ({
             autoComplete="email"
             autoFocus
             value={email}
-            onChange={this.ha}
+            onChange={this.handleChange}
           />
           <TextField
             variant="outlined"
@@ -142,6 +132,7 @@ const useStyles = (theme) => ({
             type="password"
             id="password"
             autoComplete="current-password"
+            vslue={password}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -153,6 +144,7 @@ const useStyles = (theme) => ({
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={this.handleSubmit}
           >
             Sign In
           </Button>

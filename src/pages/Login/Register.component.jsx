@@ -76,12 +76,33 @@ const useStyles = (theme) => ({
           }
 
         handleSubmit = async e => {
-
+          e.preventDefault();
+          const { displayName, email, password, confirmPassword} = this.state;
+          if (password !== confirmPassword ){
+          alert("p dontn match ");
+          return 
+          } 
+          try {
+           const {user}  = await auth.createUserWithEmailAndPassword(email, password)
+           await createUserProfile(user, {displayName})
+           this.setState({
+            displayName: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+           }, () => console.log("fgg"))
+          } catch (error) {
+              console.log(error)
+          }
+          
         }
     
-          handleChange = e => {
-            const {name, value} = e.target;
-            this.setState({[name]: value})
+          handleChange = event => {
+            // const {name, value} = e.target;
+            // this.setState({[name]: value})
+
+            this.setState({ [event.target.name]: event.target.value });
+
           }
         
 
@@ -93,7 +114,7 @@ const useStyles = (theme) => ({
         return (
             <div>
 
-<Container component="main" maxWidth="xs">
+            <Container component="main" maxWidth="xs">
 
                 <Typography component="h1" variant="h5">
           Dont have an account ?
@@ -108,9 +129,9 @@ const useStyles = (theme) => ({
             label="display name"
             name="displayName"
             autoComplete="text"
-            autoFocus
             value={displayName}
             onChange={this.handleChange}
+           
           />
           <TextField
             variant="outlined"
@@ -121,10 +142,9 @@ const useStyles = (theme) => ({
             label="Email Address"
             name="email"
             autoComplete="email"
-            autoFocus
             value={email}
             onChange={this.handleChange}
-
+          
           />
           <TextField
             variant="outlined"
@@ -138,7 +158,7 @@ const useStyles = (theme) => ({
             autoComplete="current-password"
             value={password}
             onChange={this.handleChange}
-
+        
           />
                <TextField
             variant="outlined"
@@ -152,7 +172,6 @@ const useStyles = (theme) => ({
             autoComplete="current-password"
             value={confirmPassword}
             onChange={this.handleChange}
-
           />
         
           <Button
