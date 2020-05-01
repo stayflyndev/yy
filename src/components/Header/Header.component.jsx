@@ -58,7 +58,7 @@ const Header = ({ currentUser }) => {
                         currentUser ?
                             <Button onClick={() => auth.signOut()} className={classes.button} color="inherit">Logout</Button>
                             :
-                            <Link to='/login' className={classes.button}>
+                            <Link to='/Login' className={classes.button}>
                                 <Button className={classes.button} color="inherit">Login</Button>
                             </Link>
                     }

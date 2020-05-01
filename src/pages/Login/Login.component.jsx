@@ -15,26 +15,31 @@ import Container from '@material-ui/core/Container';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import { Link } from 'react-router-dom';
 import { signInWithGoogle} from '../../firebase/firebase'
+import { render } from '@testing-library/react';
+import { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import {auth, createUserProfile} from '../../firebase/firebase'
+import Register from './Register.component'
 
 
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = (theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    // marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
   avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    // margin: theme.spacing(1),
+    // backgroundColor: theme.palette.secondary.main,
+    backgroundColor: 'darkorange'
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
+    // marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    // margin: theme.spacing(3, 0, 2),
   },
   icon: {
       color: 'darkorange',
@@ -44,23 +49,64 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: 'none',
       color: 'inherit'
   }
-}));
+});
 
-function Copyright() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link style={{textDecoration: 'none'}} color="inherit" to="/">
-          Anything for Food by Tori
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
+
+
+  
+ class SignIn extends Component  {
+   constructor() {
+   super();
+
+   this.state = {
+     displayName: '',
+     email: '',
+     password: '',
+     confirmPassword: ''
+   };
+   }
+
+  handleSubmit = async e => {
+    e.preventdefault();
+
+    const { displayName, email, password, confirmPassword} = this.state;
+
+    if (password !== confirmPassword) {
+      alert("passwords dont match");
+      console.log("huh")
+      return;
+    }
+    try {
+ const {user} = await auth.createUserWithEmailAndPassword(email, password)
+
+ await createUserProfile(user, {displayName})
+ this.setState({
+
+  displayName: '',
+  email: '',
+  password: '',
+  confirmPassword: ''
+
+ })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
-export default function SignIn() {
-  const classes = useStyles();
+  // reads inputs of the form
+
+  handleChange = e => {
+    const {name, value} = e.target;
+    this.setState({[name]: value})
+  }
+
+
+
+
+// APP DISPLAY
+  render() {
+    const{ classes }= this.props;
+    const { displayName, email, password, confirmPassword } = this.state;
 
   return (
     <Container component="main" maxWidth="xs">
@@ -72,7 +118,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={this.handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -83,6 +129,8 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            value={email}
+            onChange={this.ha}
           />
           <TextField
             variant="outlined"
@@ -122,20 +170,20 @@ export default function SignIn() {
               <Link to='/'>
                 Forgot password?
               </Link> or
-              <Link to='/register' className={classes.link}>
-        <Button >Register account</Button>
-                        </Link>
+            
             </Grid>
             <Grid item>
     
             </Grid>
           </Grid>
         </form>
+
+        
     
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
+ 
     </Container>
   );
 }
+ }
+export default withStyles(useStyles)(SignIn);
